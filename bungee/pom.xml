@@ -38,13 +38,18 @@
             <id>CodeMC</id>
             <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
+        <!-- ValioBungee -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.12-SNAPSHOT</version>
+            <version>1.16-R0.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -85,9 +90,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.imaginarycode.minecraft</groupId>
-            <artifactId>RedisBungee</artifactId>
-            <version>0.3.6-SNAPSHOT</version>
+            <groupId>com.github.ProxioDev.ValioBungee</groupId>
+            <artifactId>RedisBungee-Bungee</artifactId>
+            <version>0.12.3</version>
             <scope>provided</scope>
         </dependency>
 
