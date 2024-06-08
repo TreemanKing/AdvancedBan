@@ -74,6 +74,22 @@ public enum Command {
             PunishmentType.TEMP_MUTE.getConfSection("Usage"),
             "tempmute"),
 
+    SOFT_MUTE(
+            PunishmentType.SOFT_MUTE.getPerms(),
+            ".+",
+            new PunishmentTabCompleter(false),
+            new PunishmentProcessor(PunishmentType.SOFT_MUTE),
+            PunishmentType.SOFT_MUTE.getConfSection("Usage"),
+            "softmute"),
+
+    TEMP_SOFT_MUTE(
+            PunishmentType.TEMP_SOFT_MUTE.getPerms(),
+            "(-s )?\\S+ ?([1-9][0-9]*([wdhms]|mo)|#.+)( .*)?",
+            new PunishmentTabCompleter(true),
+            new PunishmentProcessor(PunishmentType.TEMP_SOFT_MUTE),
+            PunishmentType.TEMP_SOFT_MUTE.getConfSection("Usage"),
+            "tempsoftmute"),
+
     WARN(
             PunishmentType.WARNING.getPerms(),
             ".+",
@@ -127,6 +143,13 @@ public enum Command {
             new RevokeProcessor(PunishmentType.MUTE),
             "Un" + PunishmentType.MUTE.getConfSection("Usage"),
             "unmute"),
+
+    UN_SOFT_MUTE("ab." + PunishmentType.SOFT_MUTE.getName() + ".undo",
+            "\\S+",
+            new BasicTabCompleter(CleanTabCompleter.PLAYER_PLACEHOLDER, "[Name]"),
+            new RevokeProcessor(PunishmentType.SOFT_MUTE),
+            "Un" + PunishmentType.SOFT_MUTE.getConfSection("Usage"),
+            "unsoftmute"),
 
     UN_WARN("ab." + PunishmentType.WARNING.getName() + ".undo",
             "[0-9]+|(?i:clear \\S+)",

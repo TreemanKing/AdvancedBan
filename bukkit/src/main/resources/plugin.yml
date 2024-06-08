@@ -54,3 +54,9 @@ commands:
     description: Unmute a user
   change-reason:
     description: Change the reason of an existing punishment
+  softmute:
+    description: Softmute a user
+  tempsoftmute:
+    description: Temporarily softmute a user
+  unsoftmute:
+    description: Unsoftmute a user

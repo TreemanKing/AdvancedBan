@@ -17,6 +17,7 @@ import me.leoko.advancedban.manager.PunishmentManager;
 import me.leoko.advancedban.manager.UUIDManager;
 import me.leoko.advancedban.utils.Permissionable;
 import me.leoko.advancedban.utils.Punishment;
+import me.leoko.advancedban.utils.PunishmentType;
 import me.leoko.advancedban.utils.tabcompletion.TabCompleter;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -296,15 +297,15 @@ public class BungeeMethods implements MethodInterface {
     }
 
     @Override
-    public boolean callChat(Object player) {
+    public boolean callChat(Object player, String chatMessage) {
         Punishment pnt = PunishmentManager.get().getMute(UUIDManager.get().getUUID(getName(player)));
+        Punishment pnt2 = PunishmentManager.get().getSoftMute(UUIDManager.get().getUUID(getName(player)));
         if (pnt != null) {
-            for (String str : pnt.getLayout()) {
-                sendMessage(player, str);
-            }
+            if (pnt2.getType() == PunishmentType.SOFT_MUTE) return true;
+            pnt.getLayout().forEach(str -> sendMessage(player, str));
             return true;
         }
-        return false;
+        return pnt2 != null;
     }
 
     @Override

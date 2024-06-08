@@ -180,7 +180,7 @@ public class TestMethods implements MethodInterface {
     }
 
     @Override
-    public boolean callChat(Object player) {
+    public boolean callChat(Object player, String chatMessage) {
         fail("This method has not been setup for tests yet. Edit the me.leoko.advancedban.TestMethods Class! #18");
         return false;
     }

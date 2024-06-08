@@ -279,6 +279,17 @@ public class PunishmentManager {
     }
 
     /**
+     * Get a players active softmute.
+     *
+     * @param uuid the players uuid
+     * @return the mute or <code>null</code> if not soft-muted
+     */
+    public Punishment getSoftMute(String uuid) {
+        List<Punishment> punishments = getPunishments(uuid, PunishmentType.SOFT_MUTE, true);
+        return punishments.isEmpty() ? null : punishments.get(0);
+    }
+
+    /**
      * Check whether a player is banned.
      *
      * @param uuid the players uuid (can also be an IP)
@@ -296,6 +307,16 @@ public class PunishmentManager {
      */
     public boolean isMuted(String uuid) {
         return getMute(uuid) != null;
+    }
+
+    /**
+     * Check whether a player is softmuted.
+     *
+     * @param uuid the players uuid
+     * @return whether the player is softmuted
+     */
+    public boolean isSoftmuted(String uuid) {
+        return getSoftMute(uuid) != null;
     }
 
     /**

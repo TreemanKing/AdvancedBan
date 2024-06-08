@@ -1,5 +1,7 @@
 package me.leoko.advancedban;
 
+import me.leoko.advancedban.manager.PunishmentManager;
+import me.leoko.advancedban.manager.UUIDManager;
 import me.leoko.advancedban.utils.Permissionable;
 import me.leoko.advancedban.utils.Punishment;
 import me.leoko.advancedban.utils.tabcompletion.TabCompleter;
@@ -232,9 +234,10 @@ public interface MethodInterface {
      * (see implementation)
      *
      * @param player the player
+     * @param chatMessage the chat message
      * @return the boolean
      */
-    boolean callChat(Object player);
+    boolean callChat(Object player, String chatMessage);
 
     /**
      * (see implementation)
@@ -416,4 +419,13 @@ public interface MethodInterface {
      * @return the boolean
      */
     boolean isUnitTesting();
+
+    /**
+     * Whether the player is softmuted
+     *
+     * @return the boolean
+     */
+    default boolean isSoftMuted(Object player) {
+        return PunishmentManager.get().isSoftmuted(UUIDManager.get().getUUID(getName(player)));
+    }
 }

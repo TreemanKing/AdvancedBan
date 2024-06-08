@@ -10,6 +10,7 @@ import me.leoko.advancedban.manager.PunishmentManager;
 import me.leoko.advancedban.manager.UUIDManager;
 import me.leoko.advancedban.utils.Permissionable;
 import me.leoko.advancedban.utils.Punishment;
+import me.leoko.advancedban.utils.PunishmentType;
 import me.leoko.advancedban.utils.tabcompletion.TabCompleter;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -43,7 +44,7 @@ public class BukkitMethods implements MethodInterface {
     private final File layoutFile = new File(getDataFolder(), "Layouts.yml");
     private final File mysqlFile = new File(getDataFolder(), "MySQL.yml");
     private YamlConfiguration config;
-    private File configFile = new File(getDataFolder(), "config.yml");
+    private final File configFile = new File(getDataFolder(), "config.yml");
     private YamlConfiguration messages;
     private YamlConfiguration layouts;
     private YamlConfiguration mysql;
@@ -267,13 +268,15 @@ public class BukkitMethods implements MethodInterface {
     }
 
     @Override
-    public boolean callChat(Object player) {
+    public boolean callChat(Object player, String chatMessage) {
         Punishment pnt = PunishmentManager.get().getMute(UUIDManager.get().getUUID(getName(player)));
+        Punishment pnt2 = PunishmentManager.get().getSoftMute(UUIDManager.get().getUUID(getName(player)));
         if (pnt != null) {
+            if (pnt2.getType() == PunishmentType.SOFT_MUTE) return true;
             pnt.getLayout().forEach(str -> sendMessage(player, str));
             return true;
         }
-        return false;
+        return pnt2 != null;
     }
 
     @Override

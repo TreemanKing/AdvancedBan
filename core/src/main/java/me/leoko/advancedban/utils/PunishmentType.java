@@ -10,6 +10,8 @@ public enum PunishmentType {
     TEMP_IP_BAN("Tempipban", BAN, true, "ab.ipban.temp"),
     MUTE("Mute", null, false, "ab.mute.perma"),
     TEMP_MUTE("Tempmute", MUTE, true, "ab.mute.temp"),
+    SOFT_MUTE("Softmute", null, false, "ab.softmute.perma"),
+    TEMP_SOFT_MUTE("Tempsoftmute", SOFT_MUTE, true, "ab.softmute.temp"),
     WARNING("Warn", null, false, "ab.warn.perma"),
     TEMP_WARNING("Tempwarn", WARNING, true, "ab.warn.temp"),
     KICK("Kick", null, false, "ab.kick.use"),
@@ -50,6 +52,10 @@ public enum PunishmentType {
                 return NOTE;
             case "tempwarn":
                 return TEMP_WARNING;
+            case "softmute":
+                return SOFT_MUTE;
+            case "tempsoftmute":
+                return TEMP_SOFT_MUTE;
             case "kick":
                 return KICK;
             default:

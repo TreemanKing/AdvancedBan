@@ -8,9 +8,14 @@ import me.leoko.advancedban.manager.UUIDManager;
 
 public class CommandUtils {
     public static Punishment getPunishment(String target, PunishmentType type) {
-        return type == PunishmentType.MUTE
-                ? PunishmentManager.get().getMute(target)
-                : PunishmentManager.get().getBan(target);
+        switch (type) {
+            case MUTE:
+                return PunishmentManager.get().getMute(target);
+            case SOFT_MUTE:
+                return PunishmentManager.get().getSoftMute(target);
+            default:
+                return PunishmentManager.get().getBan(target);
+        }
     }
 
     // Removes name argument and returns uuid (null if failed)

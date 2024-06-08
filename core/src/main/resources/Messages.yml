@@ -105,6 +105,30 @@ Tempmute:
   - "&7For the reason &o%REASON%"
   - "&7&oThis player got muted for &e&o%DURATION%"
 
+Softmute:
+  Usage: "&cUsage &8» &7&o/softmute (-s) [Name] [Reason/@Layout]"
+  Done: "&c&o%NAME% &7was successfully softmuted!"
+  AlreadyDone: "&c&o%NAME% &7has already been softmuted!"
+  Exempt: "&7You are not able to softmute &c&o%NAME%"
+  Layout:
+    - '%PREFIX% &7You are permanently softmuted'
+    - "&cReason &8» &7%REASON%"
+  Notification:
+    - "&c&o%NAME% &7got softmuted by &e&o%OPERATOR%"
+    - "&7For the reason &o%REASON%"
+  UndoNotification: "&e&o%OPERATOR% &7unsoftmuted &c&o%NAME%"
+
+Tempsoftmute:
+  Usage: "&cUsage &8» &7&o/tempsoftmute (-s) [Name] [Xmo/Xd/Xh/Xm/Xs/#TimeLayout] [Reason/@Layout]"
+  MaxDuration: "&cYou are not able to softmute more than %MAX%sec"
+  Layout:
+    - '%PREFIX% &7You are softmuted for %DURATION%'
+    - "&cReason &8» &7%REASON%"
+  Notification:
+    - "&c&o%NAME% &7got softmuted by &e&o%OPERATOR%"
+    - "&7For the reason &o%REASON%"
+    - "&7&oThis player got softmuted for &e&o%DURATION%"
+
 Warn:
   Usage: "&cUsage &8» &7&o/warn (-s) [Name] [Reason/@Layout]"
   Done: "&c&o%NAME% &7was successfully warned!"
@@ -187,6 +211,12 @@ UnPunish:
   Usage: "&cUsage &8» &7&o/unpunish [ID]"
   NotFound: "&cCould not find punishment #%ID%"
   Done: "&7Punishment &a&o#%ID% &7was successfully deleted!"
+
+UnSoftmute:
+  Usage: "&cUsage &8» &7&o/unsoftmute [Name]"
+  NotPunished: "&c&o%NAME% is not softmuted!"
+  Done: "&a&o%NAME% &7was successfully unsoft-muted!"
+  Notification: "&e&o%OPERATOR% &7unsoft-muted &c&o%NAME%"
 
 
 Banlist:
